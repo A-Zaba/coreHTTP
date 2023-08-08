@@ -11,7 +11,7 @@ dependencies:
     repository:
       type: "git"
       url: "https://github.com/nodejs/llhttp.git"
-      path: test/unit-test/CMock
+      path: source/dependency/3rdparty/llhttp
 
   - name: "CMock"
     version: v2.5.2
