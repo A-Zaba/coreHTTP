@@ -1,6 +1,12 @@
 # coreHTTP Client Library
 
+<<<<<<< HEAD
 # hello
+=======
+**[API Documentation Pages for current and previous releases of this library can be found here](https://freertos.github.io/coreHTTP/)**
+
+
+>>>>>>> 97637f5b447112b6fabfc706825267ffb76dbdfe
 This repository contains a C language HTTP client library designed for embedded
 platforms. It has no dependencies on any additional libraries other than the
 standard C library, [llhttp](https://github.com/nodejs/llhttp), and a
