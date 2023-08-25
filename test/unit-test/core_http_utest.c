@@ -37,18 +37,18 @@
 #include "mock_llhttp.h"
 
 /* Default size for request buffer. */
-#define HTTP_TEST_BUFFER_SIZE ( 100 )
+#define HTTP_TEST_BUFFER_SIZE    ( 100 )
 
 /* Headers data with "\r\n\r\n" terminator to be pre-populated in buffer before
  * call to AddRangeHeader(). */
 #define PREEXISTING_HEADER_DATA \
     "POST / HTTP/1.1 \r\nAuthorization: None\r\n\r\n"
-#define PREEXISTING_HEADER_DATA_LEN  ( sizeof( PREEXISTING_HEADER_DATA ) - 1 )
+#define PREEXISTING_HEADER_DATA_LEN     ( sizeof( PREEXISTING_HEADER_DATA ) - 1 )
 
 /* Headers data without "\r\n\r\n" terminator to be pre-populated in buffer
  * before call to AddRangeHeader(). */
-#define PREEXISTING_REQUEST_LINE     "POST / HTTP/1.1 \r\n"
-#define PREEXISTING_REQUEST_LINE_LEN ( sizeof( PREEXISTING_REQUEST_LINE ) - 1 )
+#define PREEXISTING_REQUEST_LINE        "POST / HTTP/1.1 \r\n"
+#define PREEXISTING_REQUEST_LINE_LEN    ( sizeof( PREEXISTING_REQUEST_LINE ) - 1 )
 
 /* Type to store expected headers data. */
 typedef struct _headers
@@ -57,15 +57,15 @@ typedef struct _headers
     size_t dataLen;
 } _headers_t;
 
-#define HTTP_METHOD_GET_LEN        ( sizeof( HTTP_METHOD_GET ) - 1 )
-#define HTTP_TEST_REQUEST_PATH     "/robots.txt"
-#define HTTP_TEST_REQUEST_PATH_LEN ( sizeof( HTTP_TEST_REQUEST_PATH ) - 1 )
-#define HTTP_TEST_HOST_VALUE       "amazon.com"
-#define HTTP_TEST_HOST_VALUE_LEN   ( sizeof( HTTP_TEST_HOST_VALUE ) - 1 )
+#define HTTP_METHOD_GET_LEN           ( sizeof( HTTP_METHOD_GET ) - 1 )
+#define HTTP_TEST_REQUEST_PATH        "/robots.txt"
+#define HTTP_TEST_REQUEST_PATH_LEN    ( sizeof( HTTP_TEST_REQUEST_PATH ) - 1 )
+#define HTTP_TEST_HOST_VALUE          "amazon.com"
+#define HTTP_TEST_HOST_VALUE_LEN      ( sizeof( HTTP_TEST_HOST_VALUE ) - 1 )
 #define HTTP_TEST_REQUEST_LINE                                             \
     ( HTTP_METHOD_GET " " HTTP_TEST_REQUEST_PATH " " HTTP_PROTOCOL_VERSION \
-                      "\r\n" )
-#define HTTP_TEST_REQUEST_LINE_LEN ( sizeof( HTTP_TEST_REQUEST_LINE ) - 1 )
+      "\r\n" )
+#define HTTP_TEST_REQUEST_LINE_LEN    ( sizeof( HTTP_TEST_REQUEST_LINE ) - 1 )
 
 /* Used for format parameter in snprintf(...). */
 #define HTTP_TEST_HEADER_FORMAT \
@@ -99,12 +99,12 @@ typedef struct _headers
     ( HTTP_TEST_PREFIX_HEADER_LEN + 1 )
 
 /* Template HTTP header fields and values. */
-#define HTTP_TEST_HEADER_FIELD        "Authorization"
-#define HTTP_TEST_HEADER_FIELD_LEN    ( sizeof( HTTP_TEST_HEADER_FIELD ) - 1 )
-#define HTTP_TEST_HEADER_VALUE        "None"
-#define HTTP_TEST_HEADER_VALUE_LEN    ( sizeof( HTTP_TEST_HEADER_VALUE ) - 1 )
+#define HTTP_TEST_HEADER_FIELD           "Authorization"
+#define HTTP_TEST_HEADER_FIELD_LEN       ( sizeof( HTTP_TEST_HEADER_FIELD ) - 1 )
+#define HTTP_TEST_HEADER_VALUE           "None"
+#define HTTP_TEST_HEADER_VALUE_LEN       ( sizeof( HTTP_TEST_HEADER_VALUE ) - 1 )
 /* Template for first line of HTTP header. */
-#define HTTP_TEST_HEADER_REQUEST_LINE "GET / HTTP/1.1 \r\n"
+#define HTTP_TEST_HEADER_REQUEST_LINE    "GET / HTTP/1.1 \r\n"
 #define HTTP_TEST_HEADER_REQUEST_LINE_LEN \
     ( sizeof( HTTP_TEST_HEADER_REQUEST_LINE ) - 1 )
 #define HTTP_REQUEST_HEADERS_INITIALIZER \
@@ -112,8 +112,8 @@ typedef struct _headers
         0                                \
     }
 /* Template for snprintf(...) strings. */
-#define HTTP_TEST_SINGLE_HEADER_FORMAT "%s%s: %s\r\n\r\n"
-#define HTTP_TEST_DOUBLE_HEADER_FORMAT "%s%s: %s\r\n%s: %s\r\n\r\n"
+#define HTTP_TEST_SINGLE_HEADER_FORMAT    "%s%s: %s\r\n\r\n"
+#define HTTP_TEST_DOUBLE_HEADER_FORMAT    "%s%s: %s\r\n%s: %s\r\n\r\n"
 
 /* Length of the following template HTTP header.
  *   <HTTP_TEST_HEADER_REQUEST_LINE> \r\n
@@ -131,7 +131,7 @@ typedef struct _headers
       HTTP_HEADER_FIELD_SEPARATOR_LEN + HTTP_TEST_HEADER_VALUE_LEN + \
       HTTP_HEADER_LINE_SEPARATOR_LEN )
 
-#define HTTP_TEST_DOUBLE_HEADER_BUFFER_LEN ( HTTP_TEST_DOUBLE_HEADER_LEN + 1 )
+#define HTTP_TEST_DOUBLE_HEADER_BUFFER_LEN    ( HTTP_TEST_DOUBLE_HEADER_LEN + 1 )
 
 /* Template HTTP response for testing HTTPClient_ReadHeader API. */
 static const char * pTestResponse = "HTTP/1.1 200 OK\r\n"
@@ -159,16 +159,16 @@ static const char *
                                     "header{_not_in|buff}: test-value3\r\n"
                                     "\r\n";
 
-#define HEADER_INVALID_PARAMS          "Header"
-#define HEADER_INVALID_PARAMS_LEN      ( sizeof( HEADER_INVALID_PARAMS ) - 1 )
+#define HEADER_INVALID_PARAMS             "Header"
+#define HEADER_INVALID_PARAMS_LEN         ( sizeof( HEADER_INVALID_PARAMS ) - 1 )
 
-#define HEADER_IN_BUFFER               "teSt-hEader1"
-#define HEADER_IN_BUFFER_LEN           ( sizeof( HEADER_IN_BUFFER ) - 1 )
+#define HEADER_IN_BUFFER                  "teSt-hEader1"
+#define HEADER_IN_BUFFER_LEN              ( sizeof( HEADER_IN_BUFFER ) - 1 )
 
-#define HEADER_NOT_IN_BUFFER           "header-not-in-buffer"
-#define HEADER_NOT_IN_BUFFER_LEN       ( sizeof( HEADER_NOT_IN_BUFFER ) - 1 )
+#define HEADER_NOT_IN_BUFFER              "header-not-in-buffer"
+#define HEADER_NOT_IN_BUFFER_LEN          ( sizeof( HEADER_NOT_IN_BUFFER ) - 1 )
 
-#define HEADER_WITH_SPECIAL_CHARACTERS "header{_not-in|buff}"
+#define HEADER_WITH_SPECIAL_CHARACTERS    "header{_not-in|buff}"
 #define HEADER_WITH_SPECIAL_CHARACTERS_LEN \
     ( sizeof( HEADER_WITH_SPECIAL_CHARACTERS ) - 1 )
 
@@ -186,7 +186,7 @@ static const size_t headerFieldInRespLoc = 44;
 static const size_t headerFieldInRespLen = sizeof( "test-header1" ) - 1U;
 static const size_t otherHeaderFieldInRespLoc = 98;
 static const size_t otherHeaderFieldInRespLen = sizeof(
-                                                    "header_not_in_buffer" ) -
+    "header_not_in_buffer" ) -
                                                 1U;
 static const size_t headerValInRespLoc = 58;
 static const size_t headerValInRespLen = sizeof( "test-value1" ) - 1U;
@@ -269,25 +269,25 @@ llhttp_errno_t parserExecuteExpectationsCb( llhttp_t * parser,
     {
         TEST_ASSERT_EQUAL( LLHTTP_CONTINUE_PARSING,
                            ( ( llhttp_settings_t * ) ( parser->settings ) )
-                               ->on_header_field( parser,
-                                                  pFieldLocToReturn,
-                                                  fieldLenToReturn ) );
+                              ->on_header_field( parser,
+                                                 pFieldLocToReturn,
+                                                 fieldLenToReturn ) );
     }
 
     if( invokeHeaderValueCallback == 1U )
     {
         TEST_ASSERT_EQUAL( expectedValCbRetVal,
                            ( ( llhttp_settings_t * ) ( parser->settings ) )
-                               ->on_header_value( parser,
-                                                  pValueLocToReturn,
-                                                  valueLenToReturn ) );
+                              ->on_header_value( parser,
+                                                 pValueLocToReturn,
+                                                 valueLenToReturn ) );
     }
 
     if( invokeHeaderCompleteCallback == 1U )
     {
         TEST_ASSERT_EQUAL( LLHTTP_STOP_PARSING_NO_HEADER,
                            ( ( llhttp_settings_t * ) ( parser->settings ) )
-                               ->on_headers_complete( parser ) );
+                              ->on_headers_complete( parser ) );
     }
 
     /* Set the error value in the parser. */
@@ -299,12 +299,11 @@ llhttp_errno_t parserExecuteExpectationsCb( llhttp_t * parser,
  * @brief Fills the test input buffer and expectation buffers with pre-existing
  * data before calling the API function under test.
  */
-static void setupBuffersWithPreexistingHeader(
-    HTTPRequestHeaders_t * testRequestHeaders,
-    uint8_t * testBuffer,
-    size_t bufferSize,
-    _headers_t * expectedHeaders,
-    const char * preexistingData )
+static void setupBuffersWithPreexistingHeader( HTTPRequestHeaders_t * testRequestHeaders,
+                                               uint8_t * testBuffer,
+                                               size_t bufferSize,
+                                               _headers_t * expectedHeaders,
+                                               const char * preexistingData )
 {
     size_t dataLen = strlen( preexistingData );
     int numBytes = 0;
@@ -345,7 +344,7 @@ static void addRangeToExpectedHeaders( _headers_t * expectedHeaders,
 
     int numBytes = snprintf(
         ( char * ) expectedHeaders->buffer + expectedHeaders->dataLen -
-            ( terminatorExists ? HTTP_HEADER_LINE_SEPARATOR_LEN : 0 ),
+        ( terminatorExists ? HTTP_HEADER_LINE_SEPARATOR_LEN : 0 ),
         sizeof( expectedHeaders->buffer ) - expectedHeaders->dataLen,
         "%s%s%s%s\r\n\r\n",
         HTTP_RANGE_REQUEST_HEADER_FIELD,
@@ -360,8 +359,8 @@ static void addRangeToExpectedHeaders( _headers_t * expectedHeaders,
 
     expectedHeaders->dataLen += expectedRangeLen -
                                 ( terminatorExists
-                                      ? HTTP_HEADER_LINE_SEPARATOR_LEN
-                                      : 0 );
+                                  ? HTTP_HEADER_LINE_SEPARATOR_LEN
+                                  : 0 );
 }
 
 /* ============================ UNITY FIXTURES ============================== */
@@ -679,6 +678,7 @@ void test_Http_AddHeader_Happy_Path()
     /* Make sure that the entire pre-existing data was printed to the buffer. */
     TEST_ASSERT_GREATER_THAN( 0, numBytes );
     TEST_ASSERT_LESS_THAN( requestHeaders.bufferLen, ( size_t ) numBytes );
+
     /* We correctly set headersLen after writing request line to
      * requestHeaders.pBuffer. */
     requestHeaders.headersLen = HTTP_TEST_HEADER_REQUEST_LINE_LEN;
@@ -1075,7 +1075,7 @@ void test_Http_AddRangeHeader_Invalid_Params( void )
     retCode = HTTPClient_AddRangeHeader( &testHeaders,
                                          -10 /* rangeStart */,
                                          HTTP_RANGE_REQUEST_END_OF_FILE +
-                                             1 /* rangeEnd */ );
+                                         1 /* rangeEnd */ );
     TEST_ASSERT_EQUAL( HTTPInvalidParameter, retCode );
     tearDown();
     testHeaders.pBuffer = &testBuffer[ 0 ];
@@ -1547,7 +1547,7 @@ void test_caseInsensitiveStringCmp()
     invokeHeaderFieldCallback = 1U;
     invokeHeaderValueCallback = 1U;
     pFieldLocToReturn = &pTestResponseSpecialCharacter
-                            [ otherHeaderFieldInRespLoc ];
+                        [ otherHeaderFieldInRespLoc ];
     fieldLenToReturn = otherHeaderFieldInRespLen;
     pValueLocToReturn = &pTestResponseSpecialCharacter[ headerValInRespLoc ];
     valueLenToReturn = headerValInRespLen;

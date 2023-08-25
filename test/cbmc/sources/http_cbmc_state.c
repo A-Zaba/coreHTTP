@@ -39,8 +39,7 @@ void * mallocCanFail( size_t size )
     return malloc( size );
 }
 
-HTTPRequestHeaders_t * allocateHttpRequestHeaders(
-    HTTPRequestHeaders_t * pRequestHeaders )
+HTTPRequestHeaders_t * allocateHttpRequestHeaders( HTTPRequestHeaders_t * pRequestHeaders )
 {
     if( pRequestHeaders == NULL )
     {
@@ -126,8 +125,8 @@ HTTPResponse_t * allocateHttpResponse( HTTPResponse_t * pResponse )
             /* It is possible to have no headers in the response so set to NULL
              * or an offset in the response buffer. */
             pResponse->pHeaders = nondet_bool()
-                                      ? NULL
-                                      : pResponse->pBuffer + headerOffset;
+                                  ? NULL
+                                  : pResponse->pBuffer + headerOffset;
         }
 
         if( pResponse->pHeaders != NULL )
@@ -150,7 +149,7 @@ HTTPResponse_t * allocateHttpResponse( HTTPResponse_t * pResponse )
         if( pResponse->pBuffer != NULL )
         {
             pResponse->pBody = nondet_bool() ? NULL
-                                             : pResponse->pBuffer + bodyOffset;
+                               : pResponse->pBuffer + bodyOffset;
         }
 
         /* The length of the body MUST be between the start of body and the end
@@ -180,8 +179,7 @@ bool isValidHttpResponse( const HTTPResponse_t * pResponse )
     return isValid;
 }
 
-TransportInterface_t * allocateTransportInterface(
-    TransportInterface_t * pTransport )
+TransportInterface_t * allocateTransportInterface( TransportInterface_t * pTransport )
 {
     if( pTransport == NULL )
     {
@@ -207,7 +205,7 @@ bool isValidTransportInterface( TransportInterface_t * pTransportInterface )
                   ( pTransportInterface->send == TransportInterfaceSendStub ||
                     pTransportInterface->send == NULL );
         isValid = isValid && ( pTransportInterface->recv ==
-                                   TransportInterfaceReceiveStub ||
+                               TransportInterfaceReceiveStub ||
                                pTransportInterface->recv == NULL );
     }
 }
@@ -229,8 +227,7 @@ llhttp_t * allocateHttpSendParser( llhttp_t * pHttpParser )
     return pHttpParser;
 }
 
-HTTPParsingContext_t * allocateHttpSendParsingContext(
-    HTTPParsingContext_t * pHttpParsingContext )
+HTTPParsingContext_t * allocateHttpSendParsingContext( HTTPParsingContext_t * pHttpParsingContext )
 {
     HTTPResponse_t * pResponse;
     size_t bufferOffset;
@@ -253,15 +250,14 @@ HTTPParsingContext_t * allocateHttpSendParsingContext(
     return pHttpParsingContext;
 }
 
-bool isValidHttpSendParsingContext(
-    const HTTPParsingContext_t * pHttpParsingContext )
+bool isValidHttpSendParsingContext( const HTTPParsingContext_t * pHttpParsingContext )
 {
     bool isValid = true;
 
     isValid = isValid && ( pHttpParsingContext->lastHeaderFieldLen ) <=
-                             ( SIZE_MAX - CBMC_MAX_OBJECT_SIZE );
+              ( SIZE_MAX - CBMC_MAX_OBJECT_SIZE );
     isValid = isValid && ( pHttpParsingContext->lastHeaderValueLen ) <=
-                             ( SIZE_MAX - CBMC_MAX_OBJECT_SIZE );
+              ( SIZE_MAX - CBMC_MAX_OBJECT_SIZE );
 
     return isValid;
 }
@@ -282,8 +278,7 @@ llhttp_t * allocateHttpReadHeaderParser( llhttp_t * pHttpParser )
     return pHttpParser;
 }
 
-findHeaderContext_t * allocateFindHeaderContext(
-    findHeaderContext_t * pFindHeaderContext )
+findHeaderContext_t * allocateFindHeaderContext( findHeaderContext_t * pFindHeaderContext )
 {
     if( pFindHeaderContext == NULL )
     {

@@ -62,10 +62,10 @@ void HTTPClient_Send_harness()
         /* Ideally, we want to set the function pointers below with
          * __CPROVER_assume() but doing so makes CBMC run out of memory. */
         pTransportInterface->send = nondet_bool() ? NULL
-                                                  : TransportInterfaceSendStub;
+                                    : TransportInterfaceSendStub;
         pTransportInterface->recv = nondet_bool()
-                                        ? NULL
-                                        : TransportInterfaceReceiveStub;
+                                    ? NULL
+                                    : TransportInterfaceReceiveStub;
     }
 
     if( pResponse != NULL )

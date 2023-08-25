@@ -219,9 +219,9 @@ typedef struct NetworkContext NetworkContext_t;
  * has occurred.
  */
 /* @[define_transportrecv] */
-typedef int32_t ( *TransportRecv_t )( NetworkContext_t * pNetworkContext,
-                                      void * pBuffer,
-                                      size_t bytesToRecv );
+typedef int32_t ( * TransportRecv_t )( NetworkContext_t * pNetworkContext,
+                                       void * pBuffer,
+                                       size_t bytesToRecv );
 /* @[define_transportrecv] */
 
 /**
@@ -242,9 +242,9 @@ typedef int32_t ( *TransportRecv_t )( NetworkContext_t * pNetworkContext,
  * disconnection has occurred.
  */
 /* @[define_transportsend] */
-typedef int32_t ( *TransportSend_t )( NetworkContext_t * pNetworkContext,
-                                      const void * pBuffer,
-                                      size_t bytesToSend );
+typedef int32_t ( * TransportSend_t )( NetworkContext_t * pNetworkContext,
+                                       const void * pBuffer,
+                                       size_t bytesToSend );
 /* @[define_transportsend] */
 
 /**
@@ -290,9 +290,9 @@ typedef struct TransportOutVector
  * MUST NOT be returned if a network disconnection has occurred.
  */
 /* @[define_transportwritev] */
-typedef int32_t ( *TransportWritev_t )( NetworkContext_t * pNetworkContext,
-                                        TransportOutVector_t * pIoVec,
-                                        size_t ioVecCount );
+typedef int32_t ( * TransportWritev_t )( NetworkContext_t * pNetworkContext,
+                                         TransportOutVector_t * pIoVec,
+                                         size_t ioVecCount );
 /* @[define_transportwritev] */
 
 /**
@@ -302,11 +302,11 @@ typedef int32_t ( *TransportWritev_t )( NetworkContext_t * pNetworkContext,
 /* @[define_transportinterface] */
 typedef struct TransportInterface
 {
-    TransportRecv_t recv;     /**< Transport receive function pointer. */
-    TransportSend_t send;     /**< Transport send function pointer. */
-    TransportWritev_t writev; /**< Transport writev function pointer. */
+    TransportRecv_t recv;               /**< Transport receive function pointer. */
+    TransportSend_t send;               /**< Transport send function pointer. */
+    TransportWritev_t writev;           /**< Transport writev function pointer. */
     NetworkContext_t * pNetworkContext; /**< Implementation-defined network
-                                           context. */
+                                         * context. */
 } TransportInterface_t;
 /* @[define_transportinterface] */
 

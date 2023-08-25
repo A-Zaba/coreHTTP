@@ -33,10 +33,9 @@
 #include "http_cbmc_state.h"
 #include "llhttp.h"
 
-int __CPROVER_file_local_core_http_client_c_findHeaderValueParserCallback(
-    llhttp_t * pHttpParser,
-    const char * pValueLoc,
-    size_t valueLen );
+int __CPROVER_file_local_core_http_client_c_findHeaderValueParserCallback( llhttp_t * pHttpParser,
+                                                                           const char * pValueLoc,
+                                                                           size_t valueLen );
 
 void findHeaderValueParserCallback_harness()
 {

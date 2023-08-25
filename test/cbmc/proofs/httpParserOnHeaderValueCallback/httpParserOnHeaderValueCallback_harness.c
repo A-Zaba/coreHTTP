@@ -32,10 +32,9 @@
 #include "http_cbmc_state.h"
 #include "llhttp.h"
 
-int __CPROVER_file_local_core_http_client_c_httpParserOnHeaderValueCallback(
-    llhttp_t * pHttpParser,
-    const char * pLoc,
-    size_t length );
+int __CPROVER_file_local_core_http_client_c_httpParserOnHeaderValueCallback( llhttp_t * pHttpParser,
+                                                                             const char * pLoc,
+                                                                             size_t length );
 
 void httpParserOnHeaderValueCallback_harness()
 {

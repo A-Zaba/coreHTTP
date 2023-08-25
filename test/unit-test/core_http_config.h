@@ -38,7 +38,7 @@
  * If the timeout expires, the #HTTPClient_Send function will return
  * #HTTPNetworkError.
  */
-#define HTTP_RECV_RETRY_TIMEOUT_MS ( 3U )
+#define HTTP_RECV_RETRY_TIMEOUT_MS    ( 3U )
 
 /**
  * @brief The maximum duration between non-empty network transmissions while
@@ -52,6 +52,6 @@
  * If the timeout expires, the #HTTPClient_Send function returns
  * #HTTPNetworkError.
  */
-#define HTTP_SEND_RETRY_TIMEOUT_MS ( 3U )
+#define HTTP_SEND_RETRY_TIMEOUT_MS    ( 3U )
 
 #endif /* ifndef CORE_HTTP_CONFIG_H__ */

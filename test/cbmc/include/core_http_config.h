@@ -47,7 +47,7 @@
  * receive stub. There is no added value, in proving memory safety, to repeat
  * the logic that checks if the retry timeout is reached.
  */
-#define HTTP_RECV_RETRY_TIMEOUT_MS ( 1U )
+#define HTTP_RECV_RETRY_TIMEOUT_MS    ( 1U )
 
 /**
  * @brief The maximum duration between non-empty network transmissions while
@@ -65,6 +65,6 @@
  * send stub. There is no added value, in proving memory safety, to repeat
  * the logic that checks if the retry timeout is reached.
  */
-#define HTTP_SEND_RETRY_TIMEOUT_MS ( 1U )
+#define HTTP_SEND_RETRY_TIMEOUT_MS    ( 1U )
 
 #endif /* ifndef CORE_HTTP_CONFIG_H */

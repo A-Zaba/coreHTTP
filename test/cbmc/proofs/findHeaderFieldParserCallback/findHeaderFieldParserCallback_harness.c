@@ -33,10 +33,9 @@
 #include "http_cbmc_state.h"
 #include "llhttp.h"
 
-int __CPROVER_file_local_core_http_client_c_findHeaderFieldParserCallback(
-    llhttp_t * pHttpParser,
-    const char * pFieldLoc,
-    size_t fieldLen );
+int __CPROVER_file_local_core_http_client_c_findHeaderFieldParserCallback( llhttp_t * pHttpParser,
+                                                                           const char * pFieldLoc,
+                                                                           size_t fieldLen );
 
 void findHeaderFieldParserCallback_harness()
 {

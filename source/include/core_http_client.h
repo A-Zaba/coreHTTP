@@ -60,10 +60,10 @@ extern "C" {
 /** @addtogroup http_constants
  *  @{
  */
-#define HTTP_METHOD_GET  "GET"  /**< HTTP Method GET string. */
-#define HTTP_METHOD_PUT  "PUT"  /**< HTTP Method PUT string. */
-#define HTTP_METHOD_POST "POST" /**< HTTP Method POST string. */
-#define HTTP_METHOD_HEAD "HEAD" /**< HTTP Method HEAD string. */
+#define HTTP_METHOD_GET     "GET"  /**< HTTP Method GET string. */
+#define HTTP_METHOD_PUT     "PUT"  /**< HTTP Method PUT string. */
+#define HTTP_METHOD_POST    "POST" /**< HTTP Method POST string. */
+#define HTTP_METHOD_HEAD    "HEAD" /**< HTTP Method HEAD string. */
 /** @}*/
 
 /**
@@ -113,7 +113,7 @@ extern "C" {
  *
  * This flag is valid only for #HTTPRequestInfo_t reqFlags parameter.
  */
-#define HTTP_REQUEST_KEEP_ALIVE_FLAG             0x1U
+#define HTTP_REQUEST_KEEP_ALIVE_FLAG    0x1U
 
 /**
  * @defgroup http_response_flags HTTPResponse_t Flags
@@ -134,7 +134,7 @@ extern "C" {
  *
  * This flag is valid only for #HTTPResponse_t.respFlags.
  */
-#define HTTP_RESPONSE_CONNECTION_CLOSE_FLAG      0x1U
+#define HTTP_RESPONSE_CONNECTION_CLOSE_FLAG         0x1U
 
 /**
  * @ingroup http_response_flags
@@ -142,7 +142,7 @@ extern "C" {
  *
  * This flag is valid only for #HTTPResponse_t.respFlags.
  */
-#define HTTP_RESPONSE_CONNECTION_KEEP_ALIVE_FLAG 0x2U
+#define HTTP_RESPONSE_CONNECTION_KEEP_ALIVE_FLAG    0x2U
 
 /**
  * @ingroup http_constants
@@ -156,7 +156,7 @@ extern "C" {
  *  - When the requested range is for the last N bytes of the file.
  * In both cases, this value should be used for the "rangeEnd" parameter.
  */
-#define HTTP_RANGE_REQUEST_END_OF_FILE           -1
+#define HTTP_RANGE_REQUEST_END_OF_FILE              -1
 
 /**
  * @ingroup http_enum_types
@@ -400,12 +400,12 @@ typedef struct HTTPClient_ResponseHeaderParsingCallback
      * @param[in] valueLen Length in bytes of the value.
      * @param[in] statusCode The HTTP response status-code.
      */
-    void ( *onHeaderCallback )( void * pContext,
-                                const char * fieldLoc,
-                                size_t fieldLen,
-                                const char * valueLoc,
-                                size_t valueLen,
-                                uint16_t statusCode );
+    void ( * onHeaderCallback )( void * pContext,
+                                 const char * fieldLoc,
+                                 size_t fieldLen,
+                                 const char * valueLoc,
+                                 size_t valueLen,
+                                 uint16_t statusCode );
 
     /**
      * @brief Private context for the application.
@@ -420,7 +420,7 @@ typedef struct HTTPClient_ResponseHeaderParsingCallback
  *
  * @return The current time in milliseconds.
  */
-typedef uint32_t ( *HTTPClient_GetCurrentTimeFunc_t )( void );
+typedef uint32_t ( * HTTPClient_GetCurrentTimeFunc_t )( void );
 
 /**
  * @ingroup http_struct_types
@@ -583,9 +583,8 @@ typedef struct HTTPResponse
  * @endcode
  */
 /* @[declare_httpclient_initializerequestheaders] */
-HTTPStatus_t HTTPClient_InitializeRequestHeaders(
-    HTTPRequestHeaders_t * pRequestHeaders,
-    const HTTPRequestInfo_t * pRequestInfo );
+HTTPStatus_t HTTPClient_InitializeRequestHeaders( HTTPRequestHeaders_t * pRequestHeaders,
+                                                  const HTTPRequestInfo_t * pRequestInfo );
 /* @[declare_httpclient_initializerequestheaders] */
 
 /**

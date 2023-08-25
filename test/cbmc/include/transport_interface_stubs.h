@@ -37,7 +37,7 @@
 #include "core_http_client.h"
 
 #ifndef MAX_TRIES
-    #define MAX_TRIES 5
+    #define MAX_TRIES    5
 #endif
 
 /**

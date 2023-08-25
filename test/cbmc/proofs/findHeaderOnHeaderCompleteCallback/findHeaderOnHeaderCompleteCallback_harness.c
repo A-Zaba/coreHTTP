@@ -33,8 +33,7 @@
 #include "http_cbmc_state.h"
 #include "llhttp.h"
 
-int __CPROVER_file_local_core_http_client_c_findHeaderOnHeaderCompleteCallback(
-    llhttp_t * pHttpParser );
+int __CPROVER_file_local_core_http_client_c_findHeaderOnHeaderCompleteCallback( llhttp_t * pHttpParser );
 
 void findHeaderOnHeaderCompleteCallback_harness()
 {

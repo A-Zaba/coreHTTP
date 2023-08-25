@@ -55,7 +55,7 @@ extern "C" {
  * <b>Default value:</b> `my-platform-name`
  */
 #ifndef HTTP_USER_AGENT_VALUE
-    #define HTTP_USER_AGENT_VALUE "my-platform-name"
+    #define HTTP_USER_AGENT_VALUE    "my-platform-name"
 #endif
 
 /**
@@ -80,7 +80,7 @@ extern "C" {
  * <b>Default value:</b> `10`
  */
 #ifndef HTTP_RECV_RETRY_TIMEOUT_MS
-    #define HTTP_RECV_RETRY_TIMEOUT_MS ( 10U )
+    #define HTTP_RECV_RETRY_TIMEOUT_MS    ( 10U )
 #endif
 
 /**
@@ -105,7 +105,7 @@ extern "C" {
  * <b>Default value:</b> `10`
  */
 #ifndef HTTP_SEND_RETRY_TIMEOUT_MS
-    #define HTTP_SEND_RETRY_TIMEOUT_MS ( 10U )
+    #define HTTP_SEND_RETRY_TIMEOUT_MS    ( 10U )
 #endif
 
 /**

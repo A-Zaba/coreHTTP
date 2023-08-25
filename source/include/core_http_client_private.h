@@ -36,7 +36,7 @@
  * http-parser defaults this to 1, llhttp to 0.
  */
 #ifndef LLHTTP_STRICT_MODE
-    #define LLHTTP_STRICT_MODE 0
+    #define LLHTTP_STRICT_MODE    0
 #endif
 /** @endcond */
 
@@ -52,15 +52,15 @@ extern "C" {
 /**
  * @brief The HTTP protocol version of this library is HTTP/1.1.
  */
-#define HTTP_PROTOCOL_VERSION "HTTP/1.1"
-#define HTTP_PROTOCOL_VERSION_LEN                               \
+#define HTTP_PROTOCOL_VERSION    "HTTP/1.1"
+#define HTTP_PROTOCOL_VERSION_LEN \
     ( sizeof( HTTP_PROTOCOL_VERSION ) - 1U ) /**< The length of \
-                                                #HTTP_PROTOCOL_VERSION. */
+                                              #HTTP_PROTOCOL_VERSION. */
 
 /**
  * @brief Default value when pRequestInfo->pPath == NULL.
  */
-#define HTTP_EMPTY_PATH "/"
+#define HTTP_EMPTY_PATH    "/"
 #define HTTP_EMPTY_PATH_LEN \
     ( sizeof( HTTP_EMPTY_PATH ) - 1U ) /**< The length of #HTTP_EMPTY_PATH. */
 
@@ -69,23 +69,23 @@ extern "C" {
     "\r\n" /**< HTTP header field lines are separated by `\r\n`. */
 #define HTTP_HEADER_LINE_SEPARATOR_LEN       \
     ( sizeof( HTTP_HEADER_LINE_SEPARATOR ) - \
-      1U ) /**< The length of #HTTP_HEADER_LINE_SEPARATOR. */
+      1U )     /**< The length of #HTTP_HEADER_LINE_SEPARATOR. */
 #define HTTP_HEADER_END_INDICATOR \
     "\r\n\r\n" /**< The HTTP header is complete when `\r\n\r\n` is found. */
 #define HTTP_HEADER_END_INDICATOR_LEN       \
     ( sizeof( HTTP_HEADER_END_INDICATOR ) - \
       1U ) /**< The length of #HTTP_HEADER_END_INDICATOR. */
 #define HTTP_HEADER_FIELD_SEPARATOR \
-    ": " /**< HTTP header field and values are separated by ": ". */
+    ": "   /**< HTTP header field and values are separated by ": ". */
 #define HTTP_HEADER_FIELD_SEPARATOR_LEN       \
     ( sizeof( HTTP_HEADER_FIELD_SEPARATOR ) - \
-      1U ) /**< The length of #HTTP_HEADER_FIELD_SEPARATOR. */
+      1U )                            /**< The length of #HTTP_HEADER_FIELD_SEPARATOR. */
 #define SPACE_CHARACTER \
-    ' ' /**< A space character macro to help with serializing a request. */
-#define SPACE_CHARACTER_LEN ( 1U ) /**< The length of #SPACE_CHARACTER. */
+    ' '                               /**< A space character macro to help with serializing a request. */
+#define SPACE_CHARACTER_LEN    ( 1U ) /**< The length of #SPACE_CHARACTER. */
 #define DASH_CHARACTER \
-    '-' /**< A dash character macro to help with serializing a request. */
-#define DASH_CHARACTER_LEN ( 1U ) /**< The length of #DASH_CHARACTER. */
+    '-'                               /**< A dash character macro to help with serializing a request. */
+#define DASH_CHARACTER_LEN     ( 1U ) /**< The length of #DASH_CHARACTER. */
 
 /* Constants for HTTP header copy checks. */
 #define CARRIAGE_RETURN_CHARACTER \
@@ -93,42 +93,42 @@ extern "C" {
 #define LINEFEED_CHARACTER \
     '\n' /**< A linefeed character to help with header validation. */
 #define COLON_CHARACTER \
-    ':' /**< A colon character to help with header validation. */
+    ':'  /**< A colon character to help with header validation. */
 
 /**
  * @brief Indicator for function #httpHeaderStrncpy that the pSrc parameter is a
  * header value.
  */
-#define HTTP_HEADER_STRNCPY_IS_VALUE 0U
+#define HTTP_HEADER_STRNCPY_IS_VALUE    0U
 
 /**
  * @brief Indicator for function #httpHeaderStrncpy that the pSrc parameter is a
  * header field.
  */
-#define HTTP_HEADER_STRNCPY_IS_FIELD 1U
+#define HTTP_HEADER_STRNCPY_IS_FIELD    1U
 
 /* Constants for header fields added automatically during the request
  * initialization. */
 #define HTTP_USER_AGENT_FIELD \
-    "User-Agent" /**< HTTP header field "User-Agent". */
-#define HTTP_USER_AGENT_FIELD_LEN                               \
+    "User-Agent"                             /**< HTTP header field "User-Agent". */
+#define HTTP_USER_AGENT_FIELD_LEN \
     ( sizeof( HTTP_USER_AGENT_FIELD ) - 1U ) /**< The length of \
-                                                #HTTP_USER_AGENT_FIELD. */
-#define HTTP_HOST_FIELD "Host"               /**< HTTP header field "Host". */
+                                              #HTTP_USER_AGENT_FIELD. */
+#define HTTP_HOST_FIELD    "Host"            /**< HTTP header field "Host". */
 #define HTTP_HOST_FIELD_LEN \
-    ( sizeof( HTTP_HOST_FIELD ) - 1U ) /**< The length of #HTTP_HOST_FIELD. */
-#define HTTP_USER_AGENT_VALUE_LEN                               \
+    ( sizeof( HTTP_HOST_FIELD ) - 1U )       /**< The length of #HTTP_HOST_FIELD. */
+#define HTTP_USER_AGENT_VALUE_LEN \
     ( sizeof( HTTP_USER_AGENT_VALUE ) - 1U ) /**< The length of \
-                                                #HTTP_USER_AGENT_VALUE. */
+                                              #HTTP_USER_AGENT_VALUE. */
 
 /* Constants for header fields added based on flags. */
 #define HTTP_CONNECTION_FIELD \
-    "Connection" /**< HTTP header field "Connection". */
-#define HTTP_CONNECTION_FIELD_LEN                               \
+    "Connection"                             /**< HTTP header field "Connection". */
+#define HTTP_CONNECTION_FIELD_LEN \
     ( sizeof( HTTP_CONNECTION_FIELD ) - 1U ) /**< The length of \
-                                                #HTTP_CONNECTION_FIELD. */
+                                              #HTTP_CONNECTION_FIELD. */
 #define HTTP_CONTENT_LENGTH_FIELD \
-    "Content-Length" /**< HTTP header field "Content-Length". */
+    "Content-Length"                         /**< HTTP header field "Content-Length". */
 #define HTTP_CONTENT_LENGTH_FIELD_LEN       \
     ( sizeof( HTTP_CONTENT_LENGTH_FIELD ) - \
       1U ) /**< The length of #HTTP_CONTENT_LENGTH_FIELD. */
@@ -136,14 +136,16 @@ extern "C" {
 /* Constants for header values added based on flags. */
 
 /* MISRA Ref 5.4.1 [Macro identifiers] */
+
 /* More details at:
  * https://github.com/FreeRTOS/coreHTTP/blob/main/MISRA.md#rule-54 */
 /* coverity[other_declaration] */
-#define HTTP_CONNECTION_KEEP_ALIVE_VALUE                                  \
+#define HTTP_CONNECTION_KEEP_ALIVE_VALUE \
     "keep-alive" /**< HTTP header value "keep-alive" for the "Connection" \
-                    header field. */
+                  * header field. */
 
 /* MISRA Ref 5.4.2 [Macro identifiers] */
+
 /* More details at:
  * https://github.com/FreeRTOS/coreHTTP/blob/main/MISRA.md#rule-54 */
 /* coverity[misra_c_2012_rule_5_4_violation] */
@@ -154,6 +156,7 @@ extern "C" {
 /* Constants relating to Range Requests. */
 
 /* MISRA Ref 5.4.3 [Macro identifiers] */
+
 /* More details at:
  * https://github.com/FreeRTOS/coreHTTP/blob/main/MISRA.md#rule-54 */
 /* coverity[other_declaration] */
@@ -161,6 +164,7 @@ extern "C" {
     "Range" /**< HTTP header field "Range". */
 
 /* MISRA Ref 5.4.4 [Macro identifiers] */
+
 /* More details at:
  * https://github.com/FreeRTOS/coreHTTP/blob/main/MISRA.md#rule-54 */
 /* coverity[misra_c_2012_rule_5_4_violation] */
@@ -169,14 +173,16 @@ extern "C" {
       1U ) /**< The length of #HTTP_RANGE_REQUEST_HEADER_FIELD. */
 
 /* MISRA Ref 5.4.5 [Macro identifiers] */
+
 /* More details at:
  * https://github.com/FreeRTOS/coreHTTP/blob/main/MISRA.md#rule-54 */
 /* coverity[other_declaration] */
-#define HTTP_RANGE_REQUEST_HEADER_VALUE_PREFIX                             \
+#define HTTP_RANGE_REQUEST_HEADER_VALUE_PREFIX \
     "bytes=" /**< HTTP required header value prefix when specifying a byte \
-                range for partial content. */
+              * range for partial content. */
 
 /* MISRA Ref 5.4.6 [Macro identifiers] */
+
 /* More details at:
  * https://github.com/FreeRTOS/coreHTTP/blob/main/MISRA.md#rule-54 */
 /* coverity[misra_c_2012_rule_5_4_violation] */
@@ -189,7 +195,7 @@ extern "C" {
  *
  * Used for calculating buffer space for ASCII representation of range values.
  */
-#define MAX_INT32_NO_OF_DECIMAL_DIGITS 10U
+#define MAX_INT32_NO_OF_DECIMAL_DIGITS    10U
 
 /**
  * @brief Maximum buffer space for storing a Range Request Value.
@@ -206,19 +212,19 @@ extern "C" {
  * @brief Return value for llhttp registered callback to signal
  * continuation of HTTP response parsing. Equal to HPE_OK.
  */
-#define LLHTTP_CONTINUE_PARSING          0
+#define LLHTTP_CONTINUE_PARSING             0
 
 /**
  * @brief Return value for llhttp registered callback to signal halting
  * further execution.
  */
-#define LLHTTP_STOP_PARSING              HPE_USER
+#define LLHTTP_STOP_PARSING                 HPE_USER
 
 /**
  * @brief Return value for llhttp_t.on_headers_complete to signal
  * that the HTTP response has no body and to halt further execution.
  */
-#define LLHTTP_STOP_PARSING_NO_BODY      1
+#define LLHTTP_STOP_PARSING_NO_BODY         1
 
 /**
  * @brief Return value for llhttp_t.on_headers_complete to signal
@@ -227,7 +233,7 @@ extern "C" {
  * code, gives consistent return values for llhttp_execute in both
  * strict and non-strict modes.
  */
-#define LLHTTP_STOP_PARSING_NO_HEADER    1
+#define LLHTTP_STOP_PARSING_NO_HEADER       1
 
 /**
  * @brief The minimum request-line in the headers has a possible one character
@@ -243,7 +249,7 @@ extern "C" {
  * Note that custom methods are allowed per:
  * https://tools.ietf.org/html/rfc2616#section-5.1.1.
  */
-#define HTTP_MINIMUM_REQUEST_LINE_LENGTH 16u
+#define HTTP_MINIMUM_REQUEST_LINE_LENGTH    16u
 
 /**
  * @brief The state of the response message parsed after function
@@ -251,8 +257,8 @@ extern "C" {
  */
 typedef enum HTTPParsingState_t
 {
-    HTTP_PARSING_NONE = 0, /**< The parser has not started reading any response.
-                            */
+    HTTP_PARSING_NONE = 0,   /**< The parser has not started reading any response.
+                              */
     HTTP_PARSING_INCOMPLETE, /**< The parser found a partial reponse. */
     HTTP_PARSING_COMPLETE    /**< The parser found the entire response. */
 } HTTPParsingState_t;
@@ -269,10 +275,10 @@ typedef struct findHeaderContext
     const char ** pValueLoc; /**< The location of the value found in the buffer.
                               */
     size_t * pValueLen;      /**< the length of the value found. */
-    uint8_t fieldFound; /**< Indicates that the header field was found during
-                           parsing. */
-    uint8_t valueFound; /**< Indicates that the header value was found during
-                           parsing. */
+    uint8_t fieldFound;      /**< Indicates that the header field was found during
+                              * parsing. */
+    uint8_t valueFound;      /**< Indicates that the header value was found during
+                              * parsing. */
 } findHeaderContext_t;
 
 /**
@@ -335,22 +341,22 @@ typedef struct HTTPParsingContext
 {
     llhttp_t llhttpParser;            /**< Third-party llhttp context. */
     llhttp_settings_t llhttpSettings; /**< Third-party parser settings. */
-    HTTPParsingState_t state;   /**< The current state of the HTTP response
-                                   parsed. */
-    HTTPResponse_t * pResponse; /**< HTTP response associated with this parsing
-                                   context. */
-    uint8_t isHeadResponse;     /**< HTTP response is for a HEAD request. */
+    HTTPParsingState_t state;         /**< The current state of the HTTP response
+                                       * parsed. */
+    HTTPResponse_t * pResponse;       /**< HTTP response associated with this parsing
+                                       * context. */
+    uint8_t isHeadResponse;           /**< HTTP response is for a HEAD request. */
 
-    const char * pBufferCur; /**< The current location of the parser in the
-                                response buffer. */
-    const char * pLastHeaderField; /**< Holds the last part of the header field
-                                      parsed. */
-    size_t lastHeaderFieldLen; /**< The length of the last header field parsed.
-                                */
-    const char * pLastHeaderValue; /**< Holds the last part of the header value
-                                      parsed. */
-    size_t lastHeaderValueLen; /**< The length of the last value field parsed.
-                                */
+    const char * pBufferCur;          /**< The current location of the parser in the
+                                       * response buffer. */
+    const char * pLastHeaderField;    /**< Holds the last part of the header field
+                                       * parsed. */
+    size_t lastHeaderFieldLen;        /**< The length of the last header field parsed.
+                                       */
+    const char * pLastHeaderValue;    /**< Holds the last part of the header value
+                                       * parsed. */
+    size_t lastHeaderValueLen;        /**< The length of the last value field parsed.
+                                       */
 } HTTPParsingContext_t;
 
 /* *INDENT-OFF* */
