@@ -43,9 +43,6 @@
  * @return This function always returns zero.
  */
 static uint32_t getZeroTimestampMs( void );
-
-
-
 /**
  * @brief Send HTTP bytes over the transport send interface.
  *
@@ -59,9 +56,10 @@ static uint32_t getZeroTimestampMs( void );
  * returned.
  */
 static HTTPStatus_t sendHttpData( const TransportInterface_t * pTransport,
-                                  HTTPClient_GetCurrentTimeFunc_t getTimestampMs,
+                                      HTTPClient_GetCurrentTimeFunc_t getTimestampMs,
                                   const uint8_t * pData,
                                   size_t dataLen );
+  
 
 /**
  * @brief Send the HTTP headers over the transport send interface.
