@@ -33,7 +33,7 @@ jobs:
           echo ${EXCLUDE[@]} | xargs lcov --rc lcov_branch_coverage=1 -r build/coverage.info -o build/coverage.info
           lcov --rc lcov_branch_coverage=1 --list build/coverage.info
       - name: Check Coverage
-        uses: FreeRTOS/CI-CD-Github-Actions/coverage-cop@main
+        uses: FreeRTOS/CI-CD-Github-Actions/coverage-cop@v2
         with:
           path: ./build/coverage.info
   complexity:
@@ -41,7 +41,7 @@ jobs:
     steps:
       - uses: actions/checkout@v2
       - name: Check complexity
-        uses: FreeRTOS/CI-CD-Github-Actions/complexity@main
+        uses: FreeRTOS/CI-CD-Github-Actions/complexity@v2
         with:
           path: ./
   doxygen:
@@ -49,7 +49,7 @@ jobs:
     steps:
       - uses: actions/checkout@v2
       - name: Run doxygen build
-        uses: FreeRTOS/CI-CD-Github-Actions/doxygen@main
+        uses: FreeRTOS/CI-CD-Github-Actions/doxygen@v2
         with:
           path: ./
   spell-check:
@@ -58,7 +58,7 @@ jobs:
       - name: Clone This Repo
         uses: actions/checkout@v2
       - name: Run spellings check
-        uses: FreeRTOS/CI-CD-Github-Actions/spellings@main
+        uses: FreeRTOS/CI-CD-Github-Actions/spellings@v2
         with:
           path: ./
   formatting:
@@ -66,7 +66,7 @@ jobs:
     steps:
       - uses: actions/checkout@v2
       - name: Check formatting
-        uses: FreeRTOS/CI-CD-Github-Actions/formatting@main
+        uses: FreeRTOS/CI-CD-Github-Actions/formatting@v2
         with:
           path: ./
   ssot-check:
@@ -120,7 +120,7 @@ jobs:
         with:
           python-version: '3.11.0'
       - name: Measure sizes
-        uses: FreeRTOS/CI-CD-Github-Actions/memory_statistics@main
+        uses: FreeRTOS/CI-CD-Github-Actions/memory_statistics@v2
         with:
             config: .github/memory_statistics_config.json
             check_against: docs/doxygen/include/size_table.md
@@ -128,7 +128,7 @@ jobs:
     runs-on: cbmc_ubuntu-latest_64-core
     steps:
       - name: Set up CBMC runner
-        uses: FreeRTOS/CI-CD-Github-Actions/set_up_cbmc_runner@main
+        uses: FreeRTOS/CI-CD-Github-Actions/set_up_cbmc_runner@v2
         with:
           kissat_tag: latest
           cbmc_version: "5.73.0"
@@ -137,6 +137,6 @@ jobs:
           sudo apt-get update
           sudo apt-get install --yes --no-install-recommends gcc-multilib build-essential
       - name: Run CBMC
-        uses: FreeRTOS/CI-CD-Github-Actions/run_cbmc@main
+        uses: FreeRTOS/CI-CD-Github-Actions/run_cbmc@v2
         with:
           proofs_dir: test/cbmc/proofs
