@@ -62,6 +62,10 @@ static HTTPStatus_t sendHttpData( const TransportInterface_t * pTransport,
                                   size_t dataLen );
 
 
+
+
+
+
 /**
  * @brief Send the HTTP headers over the transport send interface.
  *
@@ -95,7 +99,6 @@ static HTTPStatus_t sendHttpHeaders( const TransportInterface_t * pTransport,
  */
 static HTTPStatus_t addContentLengthHeader( HTTPRequestHeaders_t * pRequestHeaders,
                                             size_t contentLength );
-
 /**
  * @brief Send the HTTP body over the transport send interface.
  *
@@ -110,7 +113,7 @@ static HTTPStatus_t addContentLengthHeader( HTTPRequestHeaders_t * pRequestHeade
  */
 static HTTPStatus_t sendHttpBody( const TransportInterface_t * pTransport,
                                   HTTPClient_GetCurrentTimeFunc_t getTimestampMs,
-                                  const uint8_t * pRequestBodyBuf,
+                   const uint8_t * pRequestBodyBuf,
                                   size_t reqBodyBufLen );
 
 /**
