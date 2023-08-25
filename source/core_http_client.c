@@ -42,8 +42,11 @@
  *
  * @return This function always returns zero.
  */
-static uint32_t getZeroTimestampMs( void );
+static uint32_t getZeroTimestampMs( void );               
 
+
+
+ 
 /**
  * @brief Send HTTP bytes over the transport send interface.
  *
